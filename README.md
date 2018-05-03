@@ -1,27 +1,45 @@
-# FrontendRva1
+# FrontendAPURSP2018
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
+* Preuzimanje projekta
 
-## Development server
+Za početak, potrebno je instalirati Git na računaru, link za preuzimanje instalacije je: https://git-scm.com/download/win
+Kako bi klonirali projekat sa GitHub-a, potrebno je učiniti sledeće korake:
+1.	Otvoriti Command Prompt
+2.	Napraviti folder na Desktopu pod nekim nazivom, i u Command Promptu se pozicionirati na njega.
+3.	Potom treba u Cmd Promptu pokrenuti: 
+git clone https://github.com/RPPIIM/FrontendAPURSP2018.git
+Na taj način, projekat sa GitHub-a kloniran je u okviru foldera koji je napravljen.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* Pokretanje aplikacije
 
-## Code scaffolding
+Kako bi aplikacija radila, potrebno je u integrisanom Terminalu VSC-a pokrenuti:
+npm install 
+ng serve 
+i potom projekat pokrenuti na: localhost:4200 u Web Browser-u
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Komitovanje projekta
 
-## Build
+1.	U Cmd Promptu se pozicionirati na sam projekat koji je potrebno komitovati
+2.	U Cmd Promptu treba pokrenuti: 
+git add .
+3.	Ukoliko ne prepoznaje korisnika potrebno je pokrenuti: 
+git config --global user.email "email@example.com" 
+git config --global user.name "Your name"
+4.	Nakon toga, u Cmd Promptu dodati i: 
+git commit -m "Inicijalni commit"
+5.	Potom, uraditi git pull, u slučaju da je neko drugi uradio git push, a u lokalnom repozitorijumu nema poslednje verzije projekta:
+git pull origin master
+6.	Na kraju, u Cmd Promptu pokrenuti: 
+git push origin master
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+## CORS
 
-## Running unit tests
+Instalirati Chrome plugin: [CORS](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+dodati u **Intercepted URLs or URL patterns** sledeće URL-ove:
 
-## Running end-to-end tests
+* http://localhost:8083/
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+* http://localhost:4200/
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Omogućiti **Enable cross-origin resource sharing**
