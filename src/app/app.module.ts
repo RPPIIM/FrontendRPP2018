@@ -28,18 +28,6 @@ import { AuthorComponent } from './core/author/author.component';
 import { HomeComponent } from './core/home/home.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ArtiklService } from './services/artikl.service';
-
-const Routes = [
-  { path: 'artikl', component: ArtiklComponent },
-  { path: 'dobavljac', component: DobavljacComponent },
-  { path: 'porudzbina', component: PorudzbinaComponent },
-  { path: 'stavkaPorudzbine', component: StavkaPorudzbineComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'author', component: AuthorComponent },
-  { path: 'about', component: AboutComponent },
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
-];
 
 @NgModule({
   declarations: [
@@ -60,11 +48,9 @@ const Routes = [
     MatButtonModule, MatIconModule, MatSidenavModule, MatListModule,
     MatGridListModule, MatExpansionModule, MatSortModule,
     MatTableModule,
-    MatToolbarModule, MatSelectModule, MatOptionModule,
-    RouterModule.forRoot(Routes),
-    HttpClientModule
+    MatToolbarModule, MatSelectModule, MatOptionModule
   ],
-  providers: [ArtiklService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

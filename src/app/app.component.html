@@ -22,7 +22,7 @@
   <mat-sidenav opened mode="side">
     <mat-accordion>
       <a mat-button style="text-align:center">
-        <mat-icon [routerLink]="['home']">home</mat-icon>
+        <mat-icon>home</mat-icon>
       </a>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
@@ -34,13 +34,13 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-button [routerLink]="['artikl']">Artikl</a>
+          <a mat-button>Artikl</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['dobavljac']">Dobavljač</a>
+          <a mat-button>Dobavljač</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['porudzbina']">Porudžbina</a>
+          <a mat-button>Porudžbina</a>
         </mat-nav-list>
       </mat-expansion-panel>
 
@@ -54,14 +54,13 @@
           </mat-panel-description>
         </mat-expansion-panel-header>
         <mat-nav-list>
-          <a mat-button [routerLink]="['about']">Pomoć</a>
+          <a mat-button>Pomoć</a>
         </mat-nav-list>
         <mat-nav-list>
-          <a mat-button [routerLink]="['author']">Autor</a>
+          <a mat-button>Autor</a>
         </mat-nav-list>
       </mat-expansion-panel>
 
     </mat-accordion>
   </mat-sidenav>
-  <router-outlet></router-outlet>
 </mat-sidenav-container>
