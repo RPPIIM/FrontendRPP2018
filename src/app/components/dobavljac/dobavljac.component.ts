@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { DobavljacService } from '../../services/dobavljac.service';
+import { Observable } from 'rxjs/Observable';
+import { Dobavljac } from '../../models/dobavljac';
+import { HttpClient } from '@angular/common/http';
+import { DobavljacDialogComponent } from '../dialogs/dobavljac-dialog/dobavljac-dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-dobavljac',
@@ -7,9 +13,59 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DobavljacComponent implements OnInit {
 
-  constructor() { }
+  displayedColumns = ['id', 'adresa', 'naziv', 'kontakt', 'actions'];
+  exampleDatabase: DobavljacService;
+  dataSource: Observable<Dobavljac[]>;
+
+
+  constructor(public httpClient: HttpClient, public dobavljacService: DobavljacService, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.loadData();
   }
 
+  public loadData() {
+    this.exampleDatabase = new DobavljacService(this.httpClient);
+    this.dataSource = this.dobavljacService.getAllDobavljac();
+  }
+
+  public add(id: number, adresa: string, naziv: string, kontakt: string) {
+    const dialogRef = this.dialog.open(DobavljacDialogComponent, {
+      data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
+    });
+    dialogRef.componentInstance.flag = 1;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        this.exampleDatabase.dataChange.value.push(this.dobavljacService.getDialogData());
+        this.loadData();
+      }
+    });
+  }
+
+  public edit(id: number, adresa: string, naziv: string, kontakt: string) {
+    const dialogRef = this.dialog.open(DobavljacDialogComponent, {
+      data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
+    });
+    dialogRef.componentInstance.flag = 2;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
+        this.exampleDatabase.dataChange.value[foundIndex] = this.dobavljacService.getDialogData();
+        this.loadData();
+      }
+    });
+  }
+  public delete(id: number, adresa: string, naziv: string, kontakt: string) {
+    const dialogRef = this.dialog.open(DobavljacDialogComponent, {
+      data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
+    });
+    dialogRef.componentInstance.flag = 3;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
+        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
+        this.loadData();
+      }
+    });
+  }
 }
