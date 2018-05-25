@@ -30,35 +30,11 @@ export class ArtiklComponent implements OnInit {
     this.dataSource = this.artiklService.getAllArtikl();
   }
 
-  public openAddDialog (id: number, naziv: string, proizvodjac: string) {
+  public openDialog (flag: number, id: number, naziv: string, proizvodjac: string) {
     const dialogRef = this.dialog.open(ArtiklDialogComponent, {data: {id: id, naziv: naziv, proizvodjac: proizvodjac}});
-    dialogRef.componentInstance.flag = 1;
+    dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.loadData();
-      }
-    });
-  }
-
-  public openEditDialog (id: number, naziv: string, proizvodjac: string) {
-    const dialogRef = this.dialog.open(ArtiklDialogComponent, {data: {id: id, naziv: naziv, proizvodjac: proizvodjac}});
-    dialogRef.componentInstance.flag = 2;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
-        this.exampleDatabase.dataChange.value[foundIndex] = this.artiklService.getDialogData();
-        this.loadData();
-      }
-    });
-  }
-
-  public openDeleteDialog (id: number, naziv: string, proizvodjac: string) {
-    const dialogRef = this.dialog.open(ArtiklDialogComponent, {data: {id: id, naziv: naziv, proizvodjac: proizvodjac}});
-    dialogRef.componentInstance.flag = 3;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
-        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
         this.loadData();
       }
     });

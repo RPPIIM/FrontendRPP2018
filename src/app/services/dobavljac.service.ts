@@ -12,16 +12,11 @@ export class DobavljacService {
     private readonly API_URL = 'http://localhost:8083/dobavljac/';
     dataChange: BehaviorSubject<Dobavljac[]> = new BehaviorSubject<Dobavljac[]>([]);
     // privremeno cuvanje podataka iz dijaloga
-    private dialogData: any;
 
     constructor(private httpClient: HttpClient) { }
 
     get data(): Dobavljac[] {
         return this.dataChange.value;
-    }
-
-    public getDialogData() {
-        return this.dialogData;
     }
 
     public getAllDobavljac(): Observable<Dobavljac[]> {
@@ -38,13 +33,11 @@ export class DobavljacService {
 
     public addDobavljac(dobavljac: Dobavljac): void {
         this.httpClient.post(this.API_URL, dobavljac).subscribe(data => {
-            this.dialogData = dobavljac;
         });
     }
 
     public updateDobavljac(dobavljac: Dobavljac): void {
         this.httpClient.put(this.API_URL, dobavljac).subscribe(data => {
-            this.dialogData = dobavljac;
         });
     }
 

@@ -19,7 +19,11 @@ import {
   MatOptionModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatInputModule
+  MatInputModule,
+  MatDatepicker,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArtiklComponent } from './components/artikl/artikl.component';
@@ -36,6 +40,10 @@ import { ArtiklDialogComponent } from './components/dialogs/artikl-dialog/artikl
 import { FormsModule } from '@angular/forms';
 import { DobavljacDialogComponent } from './components/dialogs/dobavljac-dialog/dobavljac-dialog.component';
 import { DobavljacService } from './services/dobavljac.service';
+import { PorudzbinaDialogComponent } from './components/dialogs/porudzbina-dialog/porudzbina-dialog.component';
+import { PorudzbinaService } from './services/porudzbina.service';
+import { StavkaPorudzbineDialogComponent } from './components/dialogs/stavka-porudzbine-dialog/stavka-porudzbine-dialog.component';
+import { StavkaPorudzbineService } from './services/stavkaPorudzbine.service';
 
 
 const Routes = [
@@ -62,7 +70,9 @@ const Routes = [
     AuthorComponent,
     HomeComponent,
     ArtiklDialogComponent,
-    DobavljacDialogComponent
+    DobavljacDialogComponent,
+    PorudzbinaDialogComponent,
+    StavkaPorudzbineDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,12 +82,13 @@ const Routes = [
     MatTableModule, MatToolbarModule, MatSelectModule, MatOptionModule,
     MatSnackBarModule, MatDialogModule, MatInputModule,
     MatToolbarModule, MatSelectModule, MatOptionModule,
+    MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, // Vezbe 10
     FormsModule,
     RouterModule.forRoot(Routes),
     HttpClientModule
   ],
-  entryComponents: [ArtiklDialogComponent, DobavljacDialogComponent],
-  providers: [ArtiklService, DobavljacService],
+  entryComponents: [ArtiklDialogComponent, DobavljacDialogComponent, PorudzbinaDialogComponent, StavkaPorudzbineDialogComponent],
+  providers: [ArtiklService, DobavljacService, PorudzbinaService, StavkaPorudzbineService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

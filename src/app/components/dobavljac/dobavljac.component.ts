@@ -29,43 +29,16 @@ export class DobavljacComponent implements OnInit {
     this.dataSource = this.dobavljacService.getAllDobavljac();
   }
 
-  public add(id: number, adresa: string, naziv: string, kontakt: string) {
+  public openDialog(flag: number, id: number, adresa: string, naziv: string, kontakt: string) {
     const dialogRef = this.dialog.open(DobavljacDialogComponent, {
       data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
     });
-    dialogRef.componentInstance.flag = 1;
+    dialogRef.componentInstance.flag = flag;
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.exampleDatabase.dataChange.value.push(this.dobavljacService.getDialogData());
         this.loadData();
       }
     });
   }
 
-  public edit(id: number, adresa: string, naziv: string, kontakt: string) {
-    const dialogRef = this.dialog.open(DobavljacDialogComponent, {
-      data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
-    });
-    dialogRef.componentInstance.flag = 2;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
-        this.exampleDatabase.dataChange.value[foundIndex] = this.dobavljacService.getDialogData();
-        this.loadData();
-      }
-    });
-  }
-  public delete(id: number, adresa: string, naziv: string, kontakt: string) {
-    const dialogRef = this.dialog.open(DobavljacDialogComponent, {
-      data: { id: id, adresa: adresa, naziv: naziv, kontakt: kontakt }
-    });
-    dialogRef.componentInstance.flag = 3;
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 1) {
-        const foundIndex = this.exampleDatabase.dataChange.value.findIndex(x => x.id === id);
-        this.exampleDatabase.dataChange.value.splice(foundIndex, 1);
-        this.loadData();
-      }
-    });
-  }
 }
