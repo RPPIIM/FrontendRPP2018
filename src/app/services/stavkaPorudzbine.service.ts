@@ -9,8 +9,10 @@ export class StavkaPorudzbineService {
  stavkaPorudzbineService: StavkaPorudzbineService;
  private readonly API_URL = 'http://localhost:8083/stavkaPorudzbine/';
  private readonly API_URL_BYID = 'http://localhost:8083/stavkeZaPorudzbinaId/';
+ // private readonly API_URL = 'http://localhost:8080/backend/stavkaPorudzbine/';
+ // private readonly API_URL_BYID = 'http://localhost:8080/backend/stavkeZaPorudzbinaId/';
 
-dataChange: BehaviorSubject<StavkaPorudzbine[]> = new BehaviorSubject<StavkaPorudzbine[]>([]);
+ dataChange: BehaviorSubject<StavkaPorudzbine[]> = new BehaviorSubject<StavkaPorudzbine[]>([]);
 
  constructor(private httpClient: HttpClient) { }
 

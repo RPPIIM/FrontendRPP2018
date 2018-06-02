@@ -23,7 +23,8 @@ import {
   MatDatepicker,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatCheckboxModule
+  MatCheckboxModule,
+  MatPaginatorModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ArtiklComponent } from './components/artikl/artikl.component';
@@ -83,6 +84,7 @@ const Routes = [
     MatSnackBarModule, MatDialogModule, MatInputModule,
     MatToolbarModule, MatSelectModule, MatOptionModule,
     MatDatepickerModule, MatNativeDateModule, MatCheckboxModule, // Vezbe 10
+    MatPaginatorModule,
     FormsModule,
     RouterModule.forRoot(Routes),
     HttpClientModule

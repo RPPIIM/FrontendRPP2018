@@ -10,6 +10,8 @@ import { Identifiers } from '@angular/compiler';
 export class DobavljacService {
     dobavljaci: Dobavljac[];
     private readonly API_URL = 'http://localhost:8083/dobavljac/';
+    // private readonly API_URL = 'http://localhost:8080/backend/dobavljac/';
+
     dataChange: BehaviorSubject<Dobavljac[]> = new BehaviorSubject<Dobavljac[]>([]);
     // privremeno cuvanje podataka iz dijaloga
 

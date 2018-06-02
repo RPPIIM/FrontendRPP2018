@@ -8,9 +8,10 @@ import { Observable } from 'rxjs/Observable';
 export class ArtiklService {
     artikli: Artikl[];
     private readonly API_URL = 'http://localhost:8083/artikl/';
+    // private readonly API_URL = 'http://localhost:8080/backend/artikl/';
+
     dataChange: BehaviorSubject<Artikl[]> = new BehaviorSubject<Artikl[]>([]);
     // privremeno cuvanje podataka iz dijaloga
-    private dialogData: any;
 
     constructor(private httpClient: HttpClient) { }
 
@@ -47,6 +48,4 @@ export class ArtiklService {
 
       });
     }
-
-
 }
